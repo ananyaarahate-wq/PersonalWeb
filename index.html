@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="A rocketry-themed STEM portfolio showcasing projects, research, awards, interactive trajectory tools, and contact details.">
+  <title>Ananyaa Rahate | Mission Control Portfolio</title>
+  <link rel="preload" href="assets/images/mission-control-hero.png" as="image">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#mission-control">Skip to mission control</a>
+
+  <div class="launch-intro" id="launchIntro" role="dialog" aria-labelledby="launchTitle" aria-describedby="launchStatus">
+    <div class="launch-grid" aria-hidden="true"></div>
+    <div class="launch-sequence">
+      <p class="eyebrow">Mission startup</p>
+      <h1 id="launchTitle">Mission Control Online</h1>
+      <p id="launchStatus">Preparing launch...</p>
+      <div class="countdown" id="countdownValue" aria-live="polite">T-5</div>
+      <div class="launchpad" aria-hidden="true">
+        <div class="intro-rocket">
+          <span class="rocket-nose"></span>
+          <span class="rocket-body"></span>
+          <span class="rocket-window"></span>
+          <span class="rocket-fin rocket-fin-left"></span>
+          <span class="rocket-fin rocket-fin-right"></span>
+          <span class="rocket-flame"></span>
+        </div>
+        <div class="smoke smoke-one"></div>
+        <div class="smoke smoke-two"></div>
+        <div class="smoke smoke-three"></div>
+      </div>
+      <button class="intro-skip" type="button" id="skipIntro">Skip intro</button>
+    </div>
+  </div>
+
+  <div class="space-backdrop" aria-hidden="true"></div>
+  <div class="trail-layer" id="trailLayer" aria-hidden="true"></div>
+  <div class="rocket-cursor" id="rocketCursor" aria-hidden="true">
+    <span class="cursor-nose"></span>
+    <span class="cursor-body"></span>
+    <span class="cursor-window"></span>
+    <span class="cursor-fin cursor-fin-left"></span>
+    <span class="cursor-fin cursor-fin-right"></span>
+    <span class="cursor-flame"></span>
+  </div>
+
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="brand-mark" href="#mission-control" aria-label="Mission Control home">
+        <span class="brand-signal" aria-hidden="true"></span>
+        <span>Ananyaa Rahate</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+      <ul class="nav-links" id="siteNav">
+        <li><a href="#mission-control">Mission Control</a></li>
+        <li><a href="#crew-profile">Crew Profile</a></li>
+        <li><a href="#personal-orbit">Personal Orbit</a></li>
+        <li><a href="#constellation-atlas">Star Atlas</a></li>
+        <li><a href="#missions">Missions</a></li>
+        <li><a href="#badges">Mission Badges</a></li>
+        <li><a href="#observation-deck">Observation Deck</a></li>
+        <li><a href="#trajectory-lab">Trajectory Lab</a></li>
+        <li><a href="#transmission">Transmission</a></li>
+      </ul>
+    </nav>
+    <div class="orbit-progress" aria-hidden="true">
+      <span id="orbitProgressBar"></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section" id="mission-control">
+      <div class="hero-media" aria-hidden="true">
+        <img src="assets/images/mission-control-hero.png" alt="">
+      </div>
+      <div class="section-inner hero-inner">
+        <div class="hero-content">
+          <p class="eyebrow">Mission status: active</p>
+          <h1>Mission Control Online</h1>
+          <p class="hero-copy">Welcome to my rocketry-themed corner of the internet. This site tracks my projects, research, awards, ideas, and love for STEM and space exploration.</p>
+          <p class="current-mission"><strong>Current Mission:</strong> Build something meaningful, learn along the way, and reach orbit one section at a time.</p>
+          <div class="button-row">
+            <a class="mission-button mission-button-primary" href="#missions"><span aria-hidden="true">&gt;</span> Begin Launch</a>
+            <a class="mission-button" href="#transmission"><span aria-hidden="true">&gt;</span> Transmit Signal</a>
+          </div>
+        </div>
+        <div class="hero-panel-stack">
+          <div class="telemetry-grid" aria-label="Portfolio telemetry">
+            <article class="telemetry-card">
+              <span>Active mission</span>
+              <strong>Portfolio Launch</strong>
+            </article>
+            <article class="telemetry-card">
+              <span>Mission time</span>
+              <strong id="missionClock">00:00:00 UTC</strong>
+            </article>
+            <article class="telemetry-card">
+              <span>Orbit progress</span>
+              <strong id="orbitProgressText">0%</strong>
+            </article>
+            <article class="telemetry-card">
+              <span>Signal</span>
+              <strong id="signalReadout">Strong</strong>
+            </article>
+          </div>
+          <aside class="launch-checklist" aria-labelledby="checklistTitle">
+            <div class="console-header">
+              <span id="checklistTitle">Launch Readiness</span>
+              <strong id="readinessText">100%</strong>
+            </div>
+            <div class="readiness-meter" aria-hidden="true"><span id="readinessFill"></span></div>
+            <label><input type="checkbox" checked> Research archive armed</label>
+            <label><input type="checkbox" checked> Mission badges calibrated</label>
+            <label><input type="checkbox" checked> Transmission channel clear</label>
+            <label><input type="checkbox" checked> Orbit path selected</label>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section profile-section" id="crew-profile">
+      <div class="section-inner split-layout">
+        <div>
+          <p class="eyebrow">Crew profile</p>
+          <h2>STEM curiosity with a launch-window mindset.</h2>
+          <p>I am Ananyaa, and this portfolio brings together the projects, research, awards, volunteering, and ideas that shape my interest in science, engineering, mathematics, sustainability, and space exploration.</p>
+          <p>I enjoy projects that connect technical thinking with real human problems: assistive technology, atmospheric science, sustainable energy, chemistry, mathematics, and structural engineering. This site is my mission archive: a place to track what I have built, presented, learned, and want to explore next.</p>
+        </div>
+        <aside class="profile-panel crew-console" aria-label="Crew interests">
+          <div class="console-header">
+            <span>Crew Systems</span>
+            <strong>Online</strong>
+          </div>
+          <div class="readout-grid">
+            <div><span>Focus</span><strong>STEM</strong></div>
+            <div><span>Mode</span><strong>Research</strong></div>
+            <div><span>Vector</span><strong>Orbit</strong></div>
+            <div><span>Signal</span><strong>Clear</strong></div>
+          </div>
+          <ul class="signal-list">
+            <li>Research and experimentation</li>
+            <li>Engineering for people and planet</li>
+            <li>Maths, chemistry, physics, and biology</li>
+            <li>Leadership, volunteering, and public speaking</li>
+          </ul>
+          <div class="console-meter">
+            <span>Curiosity output</span>
+            <strong>97%</strong>
+            <div><i></i></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="content-section personal-section" id="personal-orbit">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Personal Orbit</p>
+          <h2>Inside the crew capsule.</h2>
+          <p>A more personal signal: favourite sounds, tiny habits, current vibes, and the little details that make the mission feel human.</p>
+        </div>
+
+        <div class="personal-layout">
+          <article class="song-module" aria-label="Current favorite song">
+            <div class="console-header">
+              <span>Current Signal</span>
+              <strong>Now Playing</strong>
+            </div>
+            <div class="song-cover" aria-hidden="true">
+              <span class="cover-star cover-star-one"></span>
+              <span class="cover-star cover-star-two"></span>
+              <span class="cover-orbit"></span>
+              <span class="cover-title">Close To You</span>
+              <span class="cover-artist">Gracie Abrams</span>
+            </div>
+            <div class="song-copy">
+              <span class="mission-code">LUNAR SIGNAL-01</span>
+              <h3>Close To Orbit</h3>
+              <p><strong>Original track:</strong> Close To You by Gracie Abrams.</p>
+              <p>Filed as the current favourite transmission: soft, dreamy, and perfect for drifting between research mode and main-character spacewalk mode.</p>
+            </div>
+          </article>
+
+          <div class="personal-console">
+            <article class="personal-card">
+              <span>Zodiac Sign</span>
+              <strong>Virgo</strong>
+              <p>Precise, organised, quietly ambitious, and very on-brand for mission control.</p>
+            </article>
+            <article class="personal-card">
+              <span>Mission Fuel</span>
+              <strong>Fresh tabs + ambition</strong>
+              <p>The classic launch combo for starting five things and somehow making them all look intentional.</p>
+            </article>
+            <article class="personal-card">
+              <span>Comfort Module</span>
+              <strong>Cloud photos and quiet focus</strong>
+              <p>The ideal atmosphere for turning scattered thoughts into something calm and finished.</p>
+            </article>
+            <article class="personal-card">
+              <span>Current Vibe</span>
+              <strong>Orbiting but organised</strong>
+              <p>A precise scientific measurement, obviously.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section constellation-section" id="constellation-atlas">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Star Atlas</p>
+          <h2>Favourite constellations.</h2>
+          <p>A tiny sky map of favourite star patterns, filed like celestial bookmarks in the portfolio archive.</p>
+        </div>
+
+        <div class="constellation-carousel" aria-label="Favourite star constellations">
+          <div class="constellation-viewport">
+            <div class="constellation-track" id="constellationTrack">
+              <article class="constellation-card virgo-map" aria-label="Virgo constellation">
+                <div class="constellation-map" aria-hidden="true">
+                  <span class="star s1"></span>
+                  <span class="star s2"></span>
+                  <span class="star s3"></span>
+                  <span class="star s4"></span>
+                  <span class="star s5"></span>
+                </div>
+                <span class="mission-code">ATLAS-01</span>
+                <h3>Virgo</h3>
+                <p>Precision constellation, zodiac home base, and the obvious personal-orbit pick.</p>
+              </article>
+
+              <article class="constellation-card orion-map" aria-label="Orion constellation">
+                <div class="constellation-map" aria-hidden="true">
+                  <span class="star s1"></span>
+                  <span class="star s2"></span>
+                  <span class="star s3"></span>
+                  <span class="star s4"></span>
+                  <span class="star s5"></span>
+                  <span class="star s6"></span>
+                </div>
+                <span class="mission-code">ATLAS-02</span>
+                <h3>Orion</h3>
+                <p>Iconic, easy to spot, and dramatic enough to feel like the main character of the winter sky.</p>
+              </article>
+
+              <article class="constellation-card lyra-map" aria-label="Lyra constellation">
+                <div class="constellation-map" aria-hidden="true">
+                  <span class="star s1"></span>
+                  <span class="star s2"></span>
+                  <span class="star s3"></span>
+                  <span class="star s4"></span>
+                  <span class="star s5"></span>
+                </div>
+                <span class="mission-code">ATLAS-03</span>
+                <h3>Lyra</h3>
+                <p>Small, bright, musical, and perfect for linking the space theme with the current song signal.</p>
+              </article>
+
+              <article class="constellation-card cassiopeia-map" aria-label="Cassiopeia constellation">
+                <div class="constellation-map" aria-hidden="true">
+                  <span class="star s1"></span>
+                  <span class="star s2"></span>
+                  <span class="star s3"></span>
+                  <span class="star s4"></span>
+                  <span class="star s5"></span>
+                </div>
+                <span class="mission-code">ATLAS-04</span>
+                <h3>Cassiopeia</h3>
+                <p>A clean zig-zag signal in the sky, which makes it feel like a cosmic signature.</p>
+              </article>
+
+              <article class="constellation-card andromeda-map" aria-label="Andromeda constellation">
+                <div class="constellation-map" aria-hidden="true">
+                  <span class="star s1"></span>
+                  <span class="star s2"></span>
+                  <span class="star s3"></span>
+                  <span class="star s4"></span>
+                  <span class="star s5"></span>
+                  <span class="star s6"></span>
+                </div>
+                <span class="mission-code">ATLAS-05</span>
+                <h3>Andromeda</h3>
+                <p>Elegant, far-reaching, and a little mysterious, like a signal from somewhere bigger than the map.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="constellation-controls">
+            <button type="button" class="constellation-button" id="constellationPrev" aria-label="Previous constellation">&lt;</button>
+            <div class="constellation-dots" id="constellationDots" aria-label="Constellation position"></div>
+            <button type="button" class="constellation-button" id="constellationNext" aria-label="Next constellation">&gt;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section missions-section" id="missions">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Missions</p>
+          <h2>Projects as mission files.</h2>
+          <p>Confirmed projects are structured as mission cards with objectives, status signals, programme links, and discipline tags.</p>
+        </div>
+
+        <div class="filter-bar" aria-label="Filter missions by discipline">
+          <button type="button" class="filter-chip is-active" data-filter-button="all" aria-pressed="true">All</button>
+          <button type="button" class="filter-chip" data-filter-button="engineering" aria-pressed="false">Engineering</button>
+          <button type="button" class="filter-chip" data-filter-button="research" aria-pressed="false">Research</button>
+          <button type="button" class="filter-chip" data-filter-button="sustainability" aria-pressed="false">Sustainability</button>
+          <button type="button" class="filter-chip" data-filter-button="maths" aria-pressed="false">Maths</button>
+        </div>
+
+        <div class="mission-grid">
+          <article class="mission-card" data-mission-tags="engineering technology">
+            <div class="mission-card-header">
+              <span class="mission-code">HOMECARE-01</span>
+              <span class="status-chip">Developed / Presented</span>
+            </div>
+            <h3>Smart Home System for People Suffering from Dementia and Alzheimer's</h3>
+            <p class="mission-type">Engineering / Assistive Technology / Smart Home Design</p>
+            <ul class="mission-stats">
+              <li><span>Payload</span><strong>Assistive Tech</strong></li>
+              <li><span>Orbit</span><strong>Engineering</strong></li>
+              <li><span>Impact</span><strong>Independence</strong></li>
+            </ul>
+            <p><strong>Objective:</strong> Design a smart home support system that helps people living with dementia or Alzheimer's disease manage daily routines more safely, clearly, and independently.</p>
+            <p><strong>Associated programmes and awards:</strong> Arkwright Engineering Scholarship Project; Bronze CREST Award.</p>
+            <p>An engineering project focused on safety, independence, and human-centred problem solving.</p>
+            <div class="link-row">
+              <a href="https://drive.google.com/file/d/1eRpVvh71k7m3PlLNyGZNcJ6mNWqgGX3T/view?usp=drive_link" target="_blank" rel="noreferrer">Open Mission File</a>
+              <a href="https://drive.google.com/file/d/1t60ok-nPQEKyPhRcy5CLDSNNdgZFiKXl/view?usp=drive_link" target="_blank" rel="noreferrer">View Presentation</a>
+            </div>
+          </article>
+
+          <article class="mission-card" data-mission-tags="research science">
+            <div class="mission-card-header">
+              <span class="mission-code">ATMOS-02</span>
+              <span class="status-chip">Presented / Awarded</span>
+            </div>
+            <h3>How Can Cloud Microphysics Be Used to Predict Future Atmospheric Turbulence?</h3>
+            <p class="mission-type">Atmospheric Science / Aviation Research / Weather Prediction</p>
+            <ul class="mission-stats">
+              <li><span>Payload</span><strong>Atmosphere</strong></li>
+              <li><span>Orbit</span><strong>Research</strong></li>
+              <li><span>Impact</span><strong>Aviation</strong></li>
+            </ul>
+            <p><strong>Objective:</strong> Investigate how cloud microphysics can be used to better understand and predict future atmospheric turbulence.</p>
+            <p><strong>Associated programmes and awards:</strong> BT Young Scientist and Technology Exhibition 2025; Presentation Award; one of 14 projects selected from Northern Ireland out of 550.</p>
+            <p>A research project with relevance to weather modelling, atmospheric systems, and aviation safety.</p>
+            <div class="link-row">
+              <a href="https://drive.google.com/file/d/1hPQfZ14gEXfZrtAFTF50_5hASac-B-iH/view?usp=drive_link" target="_blank" rel="noreferrer">View Research Paper</a>
+              <a href="https://drive.google.com/file/d/1tyoGC7eUCzr_AEEwWBalH4vI7Jy99yXV/view?usp=drive_link" target="_blank" rel="noreferrer">View Research Poster</a>
+            </div>
+          </article>
+
+          <article class="mission-card" data-mission-tags="research sustainability chemistry">
+            <div class="mission-card-header">
+              <span class="mission-code">BIOFLAME-03</span>
+              <span class="status-chip">Presented / Awarded</span>
+            </div>
+            <h3>Bio-assisted Micro-Combustion: Using Soybean Chemiluminescence to Modulate Ignition</h3>
+            <p class="mission-type">Sustainable Energy Research / Chemistry / Combustion Science</p>
+            <ul class="mission-stats">
+              <li><span>Payload</span><strong>Chemistry</strong></li>
+              <li><span>Orbit</span><strong>Sustainability</strong></li>
+              <li><span>Impact</span><strong>Fuel Ideas</strong></li>
+            </ul>
+            <p><strong>Objective:</strong> Explore whether soybean chemiluminescence can influence ignition behaviour in micro-combustion and contribute to sustainable fuel-source research.</p>
+            <p><strong>Associated programmes and awards:</strong> Stripe Young Scientist and Technology Exhibition 2026; The Big Bang Fair 2026; Senior Scientist Winner.</p>
+            <p>A research project connecting chemistry, combustion science, and sustainability.</p>
+            <div class="link-row">
+              <a href="https://drive.google.com/file/d/1emOb2iIsvQ3Qne5-2EuhqPtaq9pKK2N-/view?usp=drive_link" target="_blank" rel="noreferrer">View Research Paper</a>
+              <a href="https://drive.google.com/file/d/14XB0ihSXpZ_4B84DQG6OJ4urwkZKFfdD/view?usp=drive_link" target="_blank" rel="noreferrer">View Research Poster</a>
+              <a href="https://drive.google.com/file/d/1Jro9rGesRuw-bJA4fr4xM7JJZVFgLd8L/view?usp=drive_link" target="_blank" rel="noreferrer">Watch Mission Briefing</a>
+            </div>
+          </article>
+
+          <article class="mission-card" data-mission-tags="maths engineering">
+            <div class="mission-card-header">
+              <span class="mission-code">STRUCTURE-04</span>
+              <span class="status-chip">Researched / Presented</span>
+            </div>
+            <h3>How Symmetry Minimises Force in Structures</h3>
+            <p class="mission-type">Mathematics / Structural Engineering / Applied Mechanics</p>
+            <ul class="mission-stats">
+              <li><span>Payload</span><strong>Symmetry</strong></li>
+              <li><span>Orbit</span><strong>Maths</strong></li>
+              <li><span>Impact</span><strong>Structures</strong></li>
+            </ul>
+            <p><strong>Objective:</strong> Investigate how symmetry can minimise and distribute forces in structures.</p>
+            <p><strong>Associated programmes and awards:</strong> University of Cambridge Women in Maths Programme.</p>
+            <p>A project linking mathematical reasoning with engineering design and structural force distribution.</p>
+            <div class="link-row">
+              <a href="https://drive.google.com/file/d/1q_FI931_uS82cS9iaQART3Pb0qrDTcvL/view?usp=drive_link" target="_blank" rel="noreferrer">View Research Paper</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section badges-section" id="badges">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Mission badges</p>
+          <h2>Achievement orbits.</h2>
+          <p>Awards are grouped by category so reviewers can scan quickly while still feeling the space-dashboard identity.</p>
+        </div>
+
+        <div class="orbit-grid">
+          <article class="orbit-card">
+            <h3>Science Fair Orbit</h3>
+            <div class="badge-list">
+              <div class="badge-card gold"><span>BIGBANG-26</span><strong>The Big Bang Fair 2026</strong><p>Senior Scientist Winner</p></div>
+              <div class="badge-card silver"><span>BTYSTE-25</span><strong>BT Young Scientist and Technology Exhibition 2025</strong><p>Finalist and Presentation Award Winner. One of 14 projects selected from Northern Ireland out of 550.</p></div>
+              <div class="badge-card bronze"><span>STRIPE-26</span><strong>Stripe Young Scientist and Technology Exhibition 2026</strong><p>Finalist. One of 8 projects selected from Northern Ireland out of 550.</p></div>
+            </div>
+          </article>
+
+          <article class="orbit-card">
+            <h3>Maths Orbit</h3>
+            <div class="badge-list">
+              <div class="badge-card silver"><span>UKMT</span><strong>Intermediate Mathematical Challenge</strong><p>Silver Award</p></div>
+              <div class="badge-card bronze"><span>UKMT</span><strong>Intermediate Mathematical Challenge</strong><p>Bronze Award</p></div>
+              <div class="badge-card bronze"><span>UKMT</span><strong>Senior Mathematical Challenge</strong><p>Bronze Award</p></div>
+              <div class="badge-card silver"><span>MOG</span><strong>Mathematical Olympiad for Girls</strong><p>Merit</p></div>
+            </div>
+          </article>
+
+          <article class="orbit-card">
+            <h3>Chemistry Orbit</h3>
+            <div class="badge-list">
+              <div class="badge-card silver"><span>NTC-24</span><strong>National Thinking Challenge 2024</strong><p>Silver Award</p></div>
+              <div class="badge-card bronze"><span>RSC</span><strong>Royal Society of Chemistry Olympiad</strong><p>Bronze Award</p></div>
+            </div>
+          </article>
+
+          <article class="orbit-card">
+            <h3>Physics Orbit</h3>
+            <div class="badge-list">
+              <div class="badge-card bronze"><span>BPhO</span><strong>Senior Physics Challenge</strong><p>Bronze Award</p></div>
+            </div>
+          </article>
+
+          <article class="orbit-card">
+            <h3>Biology Orbit</h3>
+            <div class="badge-list">
+              <div class="badge-card bronze"><span>BBO</span><strong>British Biology Olympiad</strong><p>Bronze Award</p></div>
+            </div>
+          </article>
+
+          <article class="orbit-card">
+            <h3>Service &amp; Leadership Orbit</h3>
+            <div class="badge-list">
+              <div class="badge-card gold"><span>IMPACT-25</span><strong>Impact Award 2025</strong><p>100 Hours of Volunteering</p></div>
+              <div class="badge-card silver"><span>DIANA</span><strong>The Diana Award</strong><p>Anti-Bullying Ambassador</p></div>
+            </div>
+          </article>
+
+          <article class="orbit-card">
+            <h3>Environment Orbit</h3>
+            <div class="badge-list">
+              <div class="badge-card bronze"><span>WILD-B</span><strong>Ulster Wildlife Wild Youth</strong><p>Bronze Award</p></div>
+              <div class="badge-card silver"><span>WILD-S</span><strong>Ulster Wildlife Wild Youth</strong><p>Silver Award</p></div>
+            </div>
+          </article>
+
+          <article class="orbit-card">
+            <h3>Engineering Orbit</h3>
+            <div class="badge-list">
+              <div class="badge-card gold"><span>ARKWRIGHT</span><strong>Royal Air Force Sponsored Arkwright Engineering Scholarship</strong><p>Engineering scholarship recognition</p></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section deck-section" id="observation-deck">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Observation Deck</p>
+          <h2>Live signal board.</h2>
+          <p>A compact flight-deck view of research vectors, achievement clusters, and portfolio systems.</p>
+        </div>
+
+        <div class="deck-layout">
+          <article class="radar-panel" aria-label="Research radar">
+            <div class="console-header">
+              <span>Research Radar</span>
+              <strong>Scanning</strong>
+            </div>
+            <div class="radar-screen" aria-hidden="true">
+              <span class="radar-ring ring-one"></span>
+              <span class="radar-ring ring-two"></span>
+              <span class="radar-ring ring-three"></span>
+              <span class="radar-sweep"></span>
+              <i class="ping ping-one"></i>
+              <i class="ping ping-two"></i>
+              <i class="ping ping-three"></i>
+            </div>
+          </article>
+
+          <article class="console-panel" aria-labelledby="consoleTitle">
+            <div class="console-header">
+              <span id="consoleTitle">Command Console</span>
+              <strong>Ready</strong>
+            </div>
+            <p class="console-output" id="consoleOutput">Awaiting command. Select a signal to scan the portfolio archive.</p>
+            <div class="console-actions">
+              <button type="button" data-console-command="missions">Scan Missions</button>
+              <button type="button" data-console-command="badges">Decode Badges</button>
+              <button type="button" data-console-command="trajectory">Plot Trajectory</button>
+            </div>
+          </article>
+
+          <article class="systems-panel" aria-label="System activity">
+            <div class="console-header">
+              <span>System Activity</span>
+              <strong>Nominal</strong>
+            </div>
+            <div class="system-row"><span>Research</span><i style="--level: 92%"></i><strong>92%</strong></div>
+            <div class="system-row"><span>Engineering</span><i style="--level: 88%"></i><strong>88%</strong></div>
+            <div class="system-row"><span>Leadership</span><i style="--level: 84%"></i><strong>84%</strong></div>
+            <div class="system-row"><span>Curiosity</span><i style="--level: 97%"></i><strong>97%</strong></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section trajectory-section" id="trajectory-lab">
+      <div class="trajectory-field" aria-hidden="true">
+        <span class="star-stream stream-one"></span>
+        <span class="star-stream stream-two"></span>
+        <span class="star-stream stream-three"></span>
+        <span class="orbit-arc arc-one"></span>
+        <span class="orbit-arc arc-two"></span>
+      </div>
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Trajectory Lab</p>
+          <h2>Plot a launch path.</h2>
+          <p>Tune the mission controls and watch the trajectory display recalculate a simulated orbit profile.</p>
+        </div>
+
+        <div class="trajectory-lab">
+          <form class="trajectory-controls" aria-label="Trajectory controls">
+            <div class="console-header">
+              <span>Launch Inputs</span>
+              <strong id="trajectoryStatus">Stable</strong>
+            </div>
+            <label for="thrustControl">
+              <span>Thrust</span>
+              <output id="thrustValue" for="thrustControl">72%</output>
+              <input id="thrustControl" type="range" min="35" max="100" value="72">
+            </label>
+            <label for="angleControl">
+              <span>Launch Angle</span>
+              <output id="angleValue" for="angleControl">48 deg</output>
+              <input id="angleControl" type="range" min="25" max="75" value="48">
+            </label>
+            <label for="fuelControl">
+              <span>Fuel Reserve</span>
+              <output id="fuelValue" for="fuelControl">82%</output>
+              <input id="fuelControl" type="range" min="20" max="100" value="82">
+            </label>
+            <button class="mission-button mission-button-primary" type="button" id="runTrajectory"><span aria-hidden="true">&gt;</span> Run Simulation</button>
+          </form>
+
+          <article class="trajectory-display" aria-label="Trajectory display">
+            <div class="console-header">
+              <span>Orbit Plot</span>
+              <strong id="orbitClass">Low Orbit</strong>
+            </div>
+            <div class="orbit-stage" aria-hidden="true">
+              <span class="planet-core"></span>
+              <span class="plot-line"></span>
+              <span class="plot-rocket" id="plotRocket"></span>
+            </div>
+            <div class="trajectory-readouts">
+              <div><span>Apogee</span><strong id="apogeeReadout">128 km</strong></div>
+              <div><span>Velocity</span><strong id="velocityReadout">7.8 km/s</strong></div>
+              <div><span>Efficiency</span><strong id="efficiencyReadout">84%</strong></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section transmission-section" id="transmission">
+      <div class="section-inner split-layout">
+        <div>
+          <p class="eyebrow">Transmission</p>
+          <h2>Send a signal to mission control.</h2>
+          <p>Questions, opportunities, STEM conversations, and feedback can be routed through this transmission panel.</p>
+          <p class="contact-email">Direct channel: <a href="mailto:ananyaa.rahate@gmail.com">ananyaa.rahate@gmail.com</a></p>
+        </div>
+        <form class="transmission-form" id="contactForm" action="mailto:ananyaa.rahate@gmail.com" method="post" enctype="text/plain">
+          <label for="name">Name / Callsign</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+
+          <label for="message">Transmission Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+
+          <button class="mission-button mission-button-primary" type="submit"><span aria-hidden="true">&gt;</span> Transmit Signal</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="section-inner footer-inner">
+      <div>
+        <p>Orbit achieved. Thanks for visiting.</p>
+        <a href="#mission-control">Return to Mission Control</a>
+      </div>
+      <address class="footer-contact" aria-label="Contact details">
+        <a href="https://www.linkedin.com/in/ananyaa-rahate-a9b263399/" target="_blank" rel="noreferrer">
+          <span>LinkedIn</span>
+          <strong>ananyaa-rahate-a9b263399</strong>
+        </a>
+        <a href="mailto:ananyaa.rahate@gmail.com">
+          <span>Email</span>
+          <strong>ananyaa.rahate@gmail.com</strong>
+        </a>
+        <a href="tel:+447440444773">
+          <span>Phone</span>
+          <strong>07440444773</strong>
+        </a>
+      </address>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
